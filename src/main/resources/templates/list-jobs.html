@@ -11,8 +11,73 @@
   <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
   <!-- TODO #1 - Use a loop to display job results in a table. -->
-
+  <th:block th:each="job : ${jobs}">
+    <table class="job-listing">
+      <tr>
+        <td>ID</td>
+        <td th:text="${job.id}"></td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td th:text="${job.name}"></td>
+      </tr>
+      <tr>
+        <td>Employer</td>
+        <td th:text="${job.employer}"></td>
+      </tr>
+      <tr>
+        <td>Location</td>
+        <td th:text="${job.location}"></td>
+      </tr>
+      <tr>
+        <td>Position Type</td>
+        <td th:text="${job.positionType}"></td>
+      </tr>
+      <tr>
+        <td>Skill</td>
+        <td th:text="${job.coreCompetency}"></td>
+      </tr>
+    </table>
+  </th:block>
 </div>
 
 </body>
 </html>
+
+
+
+
+
+
+<!--Use Thymeleaf Views Chapter link:https://education.launchcode.org/java-web-dev-curriculum/thymeleaf-views/reading/using-templates/index.html
+https://education.launchcode.org/java-web-dev-curriculum/thymeleaf-views/reading/iterating-templates/index.html
+
+Loop to display each job passed in from the controller -
+job data should be presented in tables - each job in its own table
+Second Link: {
+th:each = "variableName : ${collectionName}" for each item within collectionName repeat this HTML tag, but use the current value of variableName
+th:text="${item}" displays the value of item in the view, so the li element will show the first item name.
+Each successive iteration, item takes the next value in the list, and Thymeleaf adds a new <li></li> element to display that data
+th:each creates one HTML tag for each item in a collection, and only one th:each statement can be placed in a given tag.
+th:if = "${condition(and/or/! condition2 and/or/!... no parens)}" if statement
+th:unless = "${condition}" instead of else
+th:block allows you to set up nested loops. you can have an arraylist of items and display as name/description pairs
+}
+<table>
+  <tr> (table row)
+    <th> (table header)</th>
+  </tr>
+  <tr>
+    <td> (table cell) </td>
+  </tr>
+</table>
+
+My Try:
+
+
+
+
+Add the CSS class "job-listing" to a table
+Construct a table for each job, one job field per row. Refer to demo app
+Test by running the program and click links from different categories on /list
+-->
